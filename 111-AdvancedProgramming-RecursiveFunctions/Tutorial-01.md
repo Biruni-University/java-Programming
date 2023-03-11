@@ -175,26 +175,224 @@ public static int maxThree(int a, int b, int c) {
 
 # Project
 
-// TODO
+1. Write a recursive function to calculate the factorial of a number.
 
-01. Write a recursive function to calculate the factorial of a number.
-02. Write a recursive function to find the nth number in the Fibonacci sequence.
-03. Write a recursive function to calculate the sum of an array of integers.
-04. Write a recursive function to reverse a string.
-06. Write a recursive function to find the maximum value in an array of integers.
-07. Write a recursive function to check if a given string is a palindrome.
-08. Write a recursive function to count the number of occurrences of a given character in a string.
-09. Write a recursive function to find the greatest common divisor (GCD) of two numbers.
-10. Write a recursive function to check if a given binary tree is a binary search tree (BST).
-11. Write a recursive function to merge two sorted arrays into a single sorted array.
-12. Merge Sort
-13. Greatest Common Divisor(GCD) of 2 Numbers
-14. Tower of Hanoi
-15. Pascals Triangle
+_soloution:_
+```java
+public static int factorial(int n) {
+	if(n==1)
+		return 1;
+	else
+		return factorial(n-1) * n;
+}
+```
+
+\ \
+
+2. Write a recursive function to find the nth number in the Fibonacci sequence.
+
+_soloution:_
+```java
+public static int fibonacci(int n) {
+	if(n==1 || n==2)
+		return 1;
+	else
+		return fibonacci(n-1) + fibonacci(n-2);
+}
+```
+
+\ \
+
+
+3. Write a recursive function to calculate the sum of an array of integers.
+
+_soloution:_
+```java
+public static int sum(int[] arr) {
+	if(arr.length == 1)
+		return arr[0];
+	else {
+		int[] newArr = new int[arr.length-1];
+		for(int i=1; i<arr.length; i++)
+			newArr[i-1] = arr[i];
+		return arr[0] + sum(newArr);
+	}
+}
+```
+
+\ \
+
+4. Write a recursive function to reverse a string.
+
+_soloution:_
+```java
+public static String reverse(String s) {
+	if(s.length() < 2)
+		return s;
+	else
+		return s.charAt(s.length()-1) + reverse(s.substring(0, s.length()-1));
+}
+```
+
+\ \
+
+5. Write a recursive function to find the maximum value in an array of integers.
+
+_soloution:_
+```java
+public static int max(int[] arr) {
+	if(arr.length == 1)
+		return arr[0];
+	else {
+		int[] newArr = new int[arr.length-1];
+		for(int i=1; i<arr.length; i++)
+			newArr[i-1] = arr[i];
+		return Math.max(arr[0], max(newArr));
+	}
+}
+```
+
+\ \
+
+6. Write a recursive function to check if a given string is a palindrome.
+
+_soloution:_
+```java
+public static boolean isPalindrome(String s) {
+	if(s.length() == 1 || s.length() == 0)
+		return true;
+	else if(s.charAt(0) == s.charAt(s.length()-1))
+		return isPalindrome(s.substring(1, s.length()-1));
+	else
+		return false;
+}
+```
+
+\ \
+
+7. Write a recursive function to count the number of occurrences of a given character in a string.
+
+_soloution:_
+```java
+public static int count(String s, char c) {
+	if(s.length() == 0)
+		return 0;
+	else if(s.charAt(0) == c)
+		return 1 + count(s.substring(1), c);
+	else
+		return count(s.substring(1), c);
+}
+```
+
+\ \
+
+8. Write a recursive function to find the greatest common divisor (GCD) of two numbers.
+
+_soloution:_
+```java
+public static int gcd(int a, int b) {
+	if(a == b)
+		return a;
+	else if(a > b)
+		return gcd(a-b, b);
+	else
+		return gcd(a, b-a);
+}
+```
+
+\ \
+
+9. Write a recursive function to merge two sorted arrays into a single sorted array.
+
+_soloution:_
+```java
+public static int[] merge(int[] arr1, int[] arr2) {
+	int[] arr = new int[arr1.length + arr2.length];
+	int i=0, j=0, k=0;
+	while(i<arr1.length && j<arr2.length) {
+		if(arr1[i] < arr2[j])
+			arr[k++] = arr1[i++];
+		else
+			arr[k++] = arr2[j++];
+	}
+	while(i<arr1.length)
+		arr[k++] = arr1[i++];
+	while(j<arr2.length)
+		arr[k++] = arr2[j++];
+	return arr;
+}
+```
+
+10. write a recursive function to sort an array using merge sort
+
+_soloution:_
+```java
+public static int[] mergeSort(int[] arr) {
+	if(arr.length == 1)
+		return arr;
+	else {
+		int[] arr1 = new int[arr.length/2];
+		int[] arr2 = new int[arr.length - arr.length/2];
+		for(int i=0; i<arr.length/2; i++)
+			arr1[i] = arr[i];
+		for(int i=arr.length/2; i<arr.length; i++)
+			arr2[i-arr.length/2] = arr[i];
+		return merge(mergeSort(arr1), mergeSort(arr2));
+		// the merge function is the same as the one in the previous question
+	}
+}
+```
 
 ---
 
 # Extra
+
+
+* write a recursive function to find the the value of the nth row and kth column in pascals triangle
+
+_soloution:_
+```java
+
+public static int pascalValue(int row, int column) {
+	if (row == 0 || column == 0 || row == column) {
+		return 1;
+	} else {
+		return pascalValue(row - 1, column - 1) + pascalValue(row - 1, column);
+	}
+}
+```
+> In this implementation, the pascalValue function takes two parameters: row, the row of the value; and column, the column of the value.
+
+> The index of the first row is 0, and the index of the first column of each row is 0.
+
+\ \
+
+* write a java function to solve tower of hanoi problem
+
+_soloution:_
+```java
+public static void towerOfHanoi(int n, char from, char to, char aux) {
+	if(n == 1)
+		System.out.println("Move disk 1 from rod " + from + " to rod " + to);
+	else {
+		towerOfHanoi(n-1, from, aux, to);
+		System.out.println("Move disk" + n + " from rod " + from + " to rod " + to);
+		towerOfHanoi(n-1, aux, to, from);
+	}
+}
+```
+> In this implementation, the towerOfHanoi function takes three parameters: n, the number of disks to move; fromRod, the starting rod; toRod, the destination rod; and auxRod, the auxiliary rod.
+
+> The function uses recursion to move the disks. If n is 1, the function simply moves the top disk from the fromRod to the toRod. Otherwise, it recursively moves n-1 disks from the fromRod to the auxRod, then moves the nth disk from the fromRod to the toRod, and finally recursively moves the n-1 disks from the auxRod to the toRod.
+
+> To test the function, we can call it with the following code:
+
+```java
+towerOfHanoi(3, 'A', 'C', 'B');
+```
+
+\ \
+
 
 * Prove that weird(n) returns 1 for all positive integers n.
 ```java
