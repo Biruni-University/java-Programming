@@ -23,11 +23,11 @@ _answer:_ This function returns the sum of a and b.
 
 \ \
 
-* I want this function to calculate the multiplication of positive integers a and b. What should be in blank space?
+* I want this function to calculate the multiplication of positive integers a and b. What should be in third line?
 ```java
 public static int multiplication(int a, int b) {
 	if (a == 1) {
-		____________;
+		// what should be here?
 	} else {
 		return multiplication(a, b -1) + b;
 	}
@@ -136,7 +136,6 @@ public static int mod(int a, int b) {
 
 _soloution1:_
 ```java
-// not tested
 public static boolean isUnique(String s) {
 	if(s.length() == 1)
 		return true;

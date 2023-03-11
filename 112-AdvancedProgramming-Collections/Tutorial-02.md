@@ -6,8 +6,7 @@
 * Vector methods are synchronized, which means they are thread-safe, but can be slower than ArrayList when used in a single-threaded environment. ArrayList methods are not synchronized, but you can synchronize them manually using external synchronization.
 * Vector can grow or shrink by specifying the increment size or the new size explicitly, whereas ArrayList automatically resizes itself when necessary.
 * It is possible to store a primitive value directly in an array while ArrayList can only hold references. Therefore you need to use wrapper classes for primitive types (Integer for int, Character for char etc.)
-* There is no special syntax for a multi-dimensional ArrayList, you can create it via nesting
-(e.g. ArrayList<ArrayList<Integer>>).
+* There is no special syntax for a multi-dimensional ArrayList, you can create it via nesting (e.g. ArrayList<ArrayList<Integer>>).
 
 ---
 
@@ -279,7 +278,6 @@ public static void main(String[] args){
 
 _solution:_
 ```java
-//not tested
 static void fill(ArrayList<Boolean> arl) {
 	for(int i=arl.size()/2; i<arl.size(); i++)
 		arl.set(i, null);
@@ -288,25 +286,7 @@ static void fill(ArrayList<Boolean> arl) {
 
 \ \
 
-2. Write a function which takes an ArrayList of Strings words and assigns empty string object to words[i] where i is the smallest integer such that words[i] is a null reference (of course you cannot access elements of an ArrayList with bracket notation, this is just to demonstrate the point). The list should stay the same if it does not contain any null reference.
-
-_solution:_
-```java
-//not tested
-public static void assignEmptyStrings(ArrayList<String> words) {
-	int size = words.size();
-	for (int i = 0; i < size; i++) {
-		if (words.get(i) == null) {
-			words.set(i, "");
-			return;
-		}
-	}
-}
-```
-
-\ \
-
-3. Write a function which takes an ArrayList of Strings words and adds just enough strings at the end of it to ensure that the following condition is satisfied: “For every string w in words the reverse of w is also in words.” If the condition is already satisfied, no action is needed.
+2. Write a function which takes an ArrayList of Strings words and adds just enough strings at the end of it to ensure that the following condition is satisfied: “For every string w in words the reverse of w is also in words.” If the condition is already satisfied, no action is needed.
 
 	> example
 		* complete([“aa”, “aca”, “ba”, “ab”]) would not change anything.
@@ -314,7 +294,6 @@ public static void assignEmptyStrings(ArrayList<String> words) {
 
 _solution:_
 ```java
-//not tested
 public static void complete(ArrayList<String> words) {
 	int size = words.size();
 	for (int i = 0; i < size; i++) {
@@ -330,7 +309,7 @@ public static void complete(ArrayList<String> words) {
 
 \ \
 
-4. Write a function which takes an ArrayList of Strings words and removes just enough strings from it to ensure that the following condition is satisfied: “For every string w in words the reverse of w is also in words.” If the condition is already satisfied, no action is needed.
+3. Write a function which takes an ArrayList of Strings words and removes just enough strings from it to ensure that the following condition is satisfied: “For every string w in words the reverse of w is also in words.” If the condition is already satisfied, no action is needed.
 
 	> example
 		* remove([“aa”, “aca”, “ba”, “ab”]) would not change anything.
@@ -338,7 +317,6 @@ public static void complete(ArrayList<String> words) {
 
 _solution:_
 ```java
-//not tested
 public static void remove(ArrayList<String> words) {
 	int size = words.size();
 	for (int i = 0; i < size; i++) {
@@ -356,7 +334,30 @@ public static void remove(ArrayList<String> words) {
 
 \ \
 
-5. Write a function which takes a string representing a large corpus of English (a text basically) and returns an ArrayList of Strings consisting of unique English words that appear at least once in this corpus, sorted alphabetically.
+4. Write a Java method that takes two ArrayLists of integers as input and returns a new ArrayList that contains only the integers that appear in both input lists, in the order they first appear in the first input list.
+
+	> example
+		* common([1, 2, 3, 4, 5], [2, 4, 6, 8, 10]) returns [2, 4]
+		* common([1, 2, 3, 4, 5], [6, 7, 8, 9, 10]) returns []
+
+_solution:_
+```java
+public static ArrayList<Integer> common(ArrayList<Integer> arl1, ArrayList<Integer> arl2) {
+	ArrayList<Integer> res = new ArrayList<>();
+	for (int elem : arl1) {
+		if (arl2.contains(elem)) {
+			res.add(elem);
+		}
+	}
+	return res;
+}
+```
+
+---
+
+# Extra
+
+* Write a function which takes a string representing a large corpus of English (a text basically) and returns an ArrayList of Strings consisting of unique English words that appear at least once in this corpus, sorted alphabetically.
 
 getWords(“Once upon a time, there was a queen ruling a cold land. She had a big castle in which there were bright gardens as well as dark dungeons.”) returns
 
@@ -364,7 +365,6 @@ getWords(“Once upon a time, there was a queen ruling a cold land. She had a bi
 
 _solution1:_
 ```java
-//not tested
 public static ArrayList<String> getWords(String text) {
 	ArrayList<String> words = new ArrayList<>();
 	String[] split = text.split("[^a-zA-Z]+");
