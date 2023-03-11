@@ -401,3 +401,43 @@ public static ArrayList<String> getWords(String text) {
 	return sortedWords;
 }
 ```
+
+\ \
+
+* Write a Java method that takes an ArrayList of integers as input and returns a new ArrayList that contains the minimum number of swaps required to sort the input list in non-decreasing order.
+
+_solution:_
+```java
+public static ArrayList<Integer> sort(ArrayList<Integer> arl) {
+	ArrayList<Integer> res = new ArrayList<>();
+	for (int i = 0; i < arl.size(); i++) {
+		int min = arl.get(i);
+		int minIndex = i;
+		for (int j = i + 1; j < arl.size(); j++) {
+			if (arl.get(j) < min) {
+				min = arl.get(j);
+				minIndex = j;
+			}
+		}
+		if (minIndex != i) {
+			res.add(i);
+			res.add(minIndex);
+			int temp = arl.get(i);
+			arl.set(i, arl.get(minIndex));
+			arl.set(minIndex, temp);
+		}
+	}
+	return res;
+}
+
+public static void main(String[] args) {
+	ArrayList<Integer> arl = new ArrayList<>();
+	arl.add(5);
+	arl.add(3);
+	arl.add(2);
+	arl.add(1);
+	arl.add(4);
+	System.out.println(sort(arl));
+}
+```
+```
