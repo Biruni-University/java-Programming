@@ -277,9 +277,32 @@ public static void main(String[] args){
 
 1. Write a function which takes an ArrayList of Boolean and fills its last half with null references. Note that return-type of your function must be void. You can assume that the size of the parameter list is always even.
 
+_solution:_
+```java
+//not tested
+static void fill(ArrayList<Boolean> arl) {
+	for(int i=arl.size()/2; i<arl.size(); i++)
+		arl.set(i, null);
+}
+```
+
 \ \
 
 2. Write a function which takes an ArrayList of Strings words and assigns empty string object to words[i] where i is the smallest integer such that words[i] is a null reference (of course you cannot access elements of an ArrayList with bracket notation, this is just to demonstrate the point). The list should stay the same if it does not contain any null reference.
+
+_solution:_
+```java
+//not tested
+public static void assignEmptyStrings(ArrayList<String> words) {
+	int size = words.size();
+	for (int i = 0; i < size; i++) {
+		if (words.get(i) == null) {
+			words.set(i, "");
+			return;
+		}
+	}
+}
+```
 
 \ \
 
@@ -289,6 +312,22 @@ public static void main(String[] args){
 		* complete([“aa”, “aca”, “ba”, “ab”]) would not change anything.
 		* complete([“ab”, “qe”, “eq”]) appends “ba”.
 
+_solution:_
+```java
+//not tested
+public static void complete(ArrayList<String> words) {
+	int size = words.size();
+	for (int i = 0; i < size; i++) {
+		String word = words.get(i);
+		String reverse = new StringBuilder(word).reverse().toString();
+		if (!words.contains(reverse)) {
+			words.add(reverse);
+			size++;
+		}
+	}
+}
+```
+
 \ \
 
 4. Write a function which takes an ArrayList of Strings words and removes just enough strings from it to ensure that the following condition is satisfied: “For every string w in words the reverse of w is also in words.” If the condition is already satisfied, no action is needed.
@@ -297,10 +336,68 @@ public static void main(String[] args){
 		* remove([“aa”, “aca”, “ba”, “ab”]) would not change anything.
 		* remove ([“ab”, “qe”, “eq”]) removes “ab”.
 
+_solution:_
+```java
+//not tested
+public static void remove(ArrayList<String> words) {
+	int size = words.size();
+	for (int i = 0; i < size; i++) {
+	// for (int i = size - 1; i >= 0; i--) { // if using this remove "i--" at end
+		String word = words.get(i);
+		String reverse = new StringBuilder(word).reverse().toString();
+		if (!words.contains(reverse)) {
+			words.remove(i);
+			size--;
+			i--;
+		}
+	}
+}
+```
+
 \ \
 
 5. Write a function which takes a string representing a large corpus of English (a text basically) and returns an ArrayList of Strings consisting of unique English words that appear at least once in this corpus, sorted alphabetically.
 
 getWords(“Once upon a time, there was a queen ruling a cold land. She had a big castle in which there were bright gardens as well as dark dungeons.”) returns
 
-[a, as, big, bright, castle, cold, dark, dungeons, gardens, had, in, land, once, queen, ruling, she, there, time, upon, was, well, were, which]
+[a, as, big, bright, castle, cold, dark, dungeons, gardens, had, in, land, once, quein if statementen, ruling, she, there, time, upon, was, well, were, which]
+
+_solution1:_
+```java
+//not tested
+public static ArrayList<String> getWords(String text) {
+	ArrayList<String> words = new ArrayList<>();
+	String[] split = text.split("[^a-zA-Z]+");
+	for (String word : split) {
+		if (!words.contains(word)) {
+			words.add(word);
+		}
+	}
+	Collections.sort(words);
+	return words;
+}
+```
+
+_solution2:_
+```java
+public static ArrayList<String> getWords(String text) {
+	// Split the text into words
+	String[] words = text.split("[^a-zA-Z]+");
+
+	// Create a set to store unique words
+	Set<String> uniqueWords = new HashSet<>();
+
+	// Add each word to the set
+	for (String word : words) {
+		if (!word.isEmpty()) { // Ignore empty strings
+			uniqueWords.add(word.toLowerCase());
+		}
+	}
+
+	// Sort the words alphabetically
+	ArrayList<String> sortedWords = new ArrayList<>(uniqueWords);
+	Collections.sort(sortedWords);
+
+	return sortedWords;
+}
+```
