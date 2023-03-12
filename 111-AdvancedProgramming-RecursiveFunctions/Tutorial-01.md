@@ -86,6 +86,13 @@ _answer:_ infinite recursion
 	> example:
 		* power(2, 3) --> 8
 
+_Main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(power(2, 3));
+}
+```
+
 _soloution1:_
 ```java
 public static int pow(int a, int b) {
@@ -98,7 +105,6 @@ public static int pow(int a, int b) {
 
 _soloution2:_
 ```java
-// not tested
 public static int power(int n, int m) {
 	if (m == 0) {
 		return 1;
@@ -114,6 +120,13 @@ public static int power(int n, int m) {
 
 	> example:
 		* mod(3, 2) --> 1
+
+_Main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(mod(3, 2));
+}
+```
 
 _soloution:_
 ```java
@@ -134,19 +147,16 @@ public static int mod(int a, int b) {
 		* isUnique(“moon”) --> false
 		* isUnique(“trash”) --> true
 
-_soloution1:_
+_Main method:_
 ```java
-public static boolean isUnique(String s) {
-	if(s.length() == 1)
-		return true;
-	else if(s.charAt(0) == s.charAt(s.length()-1))
-		return false;
-	else
-		return isUnique(s.substring(1, s.length()-1));
+public static void main(String[] args) {
+	System.out.println(isUnique("pickle"));
+	System.out.println(isUnique("moon"));
+	System.out.println(isUnique("trash"));
 }
 ```
 
-_soloution2:_
+_soloution:_
 ```java
 public static boolean isUnique(String s) {
 	if(s.length() == 1)
@@ -164,6 +174,15 @@ public static boolean isUnique(String s) {
 
 * Write a method that takes three integer arguments and returns their maximum. (You can use Math.max() function)
 
+_Main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(maxThree(1, 2, 3));
+	System.out.println(maxThree(3, 2, 1));
+	System.out.println(maxThree(2, 3, 1));
+}
+```
+
 _soloution:_
 ```java
 public static int maxThree(int a, int b, int c) {
@@ -176,6 +195,13 @@ public static int maxThree(int a, int b, int c) {
 # Project
 
 1. Write a recursive function to calculate the factorial of a number.
+
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(factorial(5));
+}
+```
 
 _soloution:_
 ```java
@@ -191,8 +217,16 @@ public static int factorial(int n) {
 
 2. Write a recursive function to find the nth number in the Fibonacci sequence.
 
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(fibonacci(5));
+}
+```
+
 _soloution:_
 ```java
+// the index of the first number in the sequence is 0
 public static int fibonacci(int n) {
 	if(n==1 || n==2)
 		return 1;
@@ -205,6 +239,15 @@ public static int fibonacci(int n) {
 
 
 3. Write a recursive function to calculate the sum of an array of integers.
+
+
+_main method:_
+```java
+public static void main(String[] args) {
+	int[] arr = {1, 2, 3, 4, 5};
+	System.out.println(sum(arr));
+}
+```
 
 _soloution:_
 ```java
@@ -224,6 +267,13 @@ public static int sum(int[] arr) {
 
 4. Write a recursive function to reverse a string.
 
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(reverse("hello"));
+}
+```
+
 _soloution:_
 ```java
 public static String reverse(String s) {
@@ -237,6 +287,14 @@ public static String reverse(String s) {
 \ \
 
 5. Write a recursive function to find the maximum value in an array of integers.
+
+_main method:_
+```java
+public static void main(String[] args) {
+	int[] arr = {1, 2, 3, 4, 5};
+	System.out.println(max(arr));
+}
+```
 
 _soloution:_
 ```java
@@ -256,6 +314,14 @@ public static int max(int[] arr) {
 
 6. Write a recursive function to check if a given string is a palindrome.
 
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(isPalindrome("racecar"));
+	System.out.println(isPalindrome("hello"));
+}
+```
+
 _soloution:_
 ```java
 public static boolean isPalindrome(String s) {
@@ -271,6 +337,13 @@ public static boolean isPalindrome(String s) {
 \ \
 
 7. Write a recursive function to count the number of occurrences of a given character in a string.
+
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(count("hello", 'l'));
+}
+```
 
 _soloution:_
 ```java
@@ -288,6 +361,12 @@ public static int count(String s, char c) {
 
 8. Write a recursive function to find the greatest common divisor (GCD) of two numbers.
 
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(gcd(12, 18));
+}
+```
 _soloution:_
 ```java
 public static int gcd(int a, int b) {
@@ -303,6 +382,17 @@ public static int gcd(int a, int b) {
 \ \
 
 9. Write a recursive function to merge two sorted arrays into a single sorted array.
+
+_main method:_
+```java
+public static void main(String[] args) {
+	int[] arr1 = {1, 3, 5, 7, 9};
+	int[] arr2 = {2, 4, 6, 8, 10};
+	int[] arr = merge(arr1, arr2);
+	for(int i=0; i<arr.length; i++)
+		System.out.print(arr[i] + " ");
+}
+```
 
 _soloution:_
 ```java
@@ -323,7 +413,19 @@ public static int[] merge(int[] arr1, int[] arr2) {
 }
 ```
 
+\ \
+
 10. write a recursive function to sort an array using merge sort
+
+_main method:_
+```java
+public static void main(String[] args) {
+	int[] arr = {5, 4, 3, 2, 1};
+	int[] sorted = mergeSort(arr);
+	for(int i=0; i<sorted.length; i++)
+		System.out.print(sorted[i] + " ");
+}
+```
 
 _soloution:_
 ```java
@@ -350,9 +452,15 @@ public static int[] mergeSort(int[] arr) {
 
 * write a recursive function to find the the value of the nth row and kth column in pascals triangle
 
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(pascalValue(4, 2));
+}
+```
+
 _soloution:_
 ```java
-
 public static int pascalValue(int row, int column) {
 	if (row == 0 || column == 0 || row == column) {
 		return 1;
@@ -406,7 +514,17 @@ public static int weird(int n) {
 }
 ```
 
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(weird(5));
+}
+```
+
+\ \
+
 * It is a famous [conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) in mathematics that the following function weirder(n) returns 1 for all positive integers n. No one has been able to prove it so far. Simple-looking recursive functions may exhibit complex behavior.
+
 ```java
 public static int weirder(int n) {
 	if(n==1)
@@ -415,5 +533,12 @@ public static int weirder(int n) {
 		return weirder(n/2);
 	else
 		return weirder(3*n+1);
+}
+```
+
+_main method:_
+```java
+public static void main(String[] args) {
+	System.out.println(weirder(5));
 }
 ```
