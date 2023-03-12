@@ -477,6 +477,19 @@ public static int pascalValue(int row, int column) {
 
 * write a java function to solve tower of hanoi problem
 
+> The Tower of Hanoi is a classic puzzle or mathematical problem that involves moving a set of disks from one pole or peg to another, with the constraint that only one disk can be moved at a time, and no larger disk can be placed on top of a smaller disk.
+
+> The puzzle consists of three poles or pegs and a set of disks of different sizes. The disks are initially stacked in decreasing size order, with the largest disk at the bottom and the smallest at the top, on one of the poles. The goal is to move the entire stack of disks to another pole, while following the rules mentioned above.
+
+> The Tower of Hanoi problem has a recursive solution, which involves breaking down the problem into smaller subproblems, each of which can be solved recursively. The recursive solution involves moving n-1 disks from the starting pole to the auxiliary pole, moving the remaining largest disk from the starting pole to the destination pole, and then moving the n-1 disks from the auxiliary pole to the destination pole. This process is repeated recursively until all the disks are moved to the destination pole
+
+_main method:_
+```java
+public static void main(String[] args) {
+	towerOfHanoi(3, 'A', 'C', 'B');
+}
+```
+
 _soloution:_
 ```java
 public static void towerOfHanoi(int n, char from, char to, char aux) {
@@ -493,16 +506,10 @@ public static void towerOfHanoi(int n, char from, char to, char aux) {
 
 > The function uses recursion to move the disks. If n is 1, the function simply moves the top disk from the fromRod to the toRod. Otherwise, it recursively moves n-1 disks from the fromRod to the auxRod, then moves the nth disk from the fromRod to the toRod, and finally recursively moves the n-1 disks from the auxRod to the toRod.
 
-> To test the function, we can call it with the following code:
-
-```java
-towerOfHanoi(3, 'A', 'C', 'B');
-```
-
 \ \
 
-
 * Prove that weird(n) returns 1 for all positive integers n.
+
 ```java
 public static int weird(int n) {
 	if(n==1)
