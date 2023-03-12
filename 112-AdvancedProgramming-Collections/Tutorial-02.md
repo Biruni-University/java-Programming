@@ -1,6 +1,7 @@
 % ArrayList and Vector
 
 # A brief recap
+
 * Both ArrayList and Vector are classes in Java that implement the List interface and provide dynamic arrays that can be resized at runtime. They have similar functionality, but there are some differences:
 * ArrayList is part of the Java Collections Framework introduced in Java 1.2, while Vector is a legacy class that was introduced in Java 1.0.
 * Vector methods are synchronized, which means they are thread-safe, but can be slower than ArrayList when used in a single-threaded environment. ArrayList methods are not synchronized, but you can synchronize them manually using external synchronization.
@@ -14,6 +15,7 @@
 
 * The following code is supposed to store numbers entered by user in memory until
 the user enters 0. Which statement should be put in place of the comment?
+
 ```java
 public static void main(String[] args){
 	Scanner sc = new Scanner(System.in);
@@ -35,6 +37,7 @@ _answer:_ b
 \ \
 
 * What will be the output of the following program?
+
 ```java
 public static void main(String[] args){
 	ArrayList<Integer> nums = {2,3,5};
@@ -51,6 +54,7 @@ _answer:_ d
 \ \
 
 * What will be the output of the following program?
+
 ```java
 public static void main(String[] args){
 	ArrayList<Integer> nums = new ArrayList<>();
@@ -70,6 +74,7 @@ _answer:_ a
 \ \
 
 * In which of the following scenarios we need a dynamically resizable storage?
+
 a) Storing integer values received from user where the first value
 entered is assumed to be the number of values following.
 b) Storing integer values provided in the source code.
@@ -83,6 +88,7 @@ _answer:_ d
 \ \
 
 * What will be the output of the following program?
+
 ```java
 public static void main(String[] args){
 	Vector<Integer> v = new Vector<>(0,10);
@@ -100,6 +106,7 @@ _answer:_ c
 \ \
 
 * What will be the output of the following program?
+
 ```java
 public static void main(String[] args){
 	ArrayList<Integer> arr = new ArrayList<>();
@@ -120,6 +127,21 @@ _answer:_ b
 
 * Write a method which takes two ArrayList of integers and returns their intersection (the elements that appear in both lists) in the order they appear in the first list.
 
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<Integer> a = new ArrayList<>();
+	ArrayList<Integer> b = new ArrayList<>();
+	for(int i=0; i<10; i++){
+		a.add((int)(Math.random()*10));
+		b.add((int)(Math.random()*10));
+	}
+	System.out.println(a);
+	System.out.println(b);
+	System.out.println(intersection(a,b));
+}
+```
+
 _solution:_
 ```java
 static ArrayList<Integer> intersection( ArrayList<Integer> a, ArrayList<Integer> b){
@@ -134,6 +156,18 @@ static ArrayList<Integer> intersection( ArrayList<Integer> a, ArrayList<Integer>
 \ \
 
 * Write a method which takes an ArrayList of integers and removes any duplicate elements in it.
+
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<Integer> a = new ArrayList<>();
+	for(int i=0; i<10; i++)
+		a.add((int)(Math.random()*10));
+	System.out.println(a);
+	uniqify(a);
+	System.out.println(a);
+}
+```
 
 _solution1:_
 ```java
@@ -157,6 +191,8 @@ static void uniqify(ArrayList<Integer> a) {
 \ \
 
 * Write a function which takes an ArrayList of characters and removes all ‘e’ characters in it without changing the order of other elements.(removeAll() method is not allowed)
+
+_Main method:_
 ```java
 public static void main(String[] args){
 	ArrayList<Character> arl = new ArrayList<>();
@@ -166,9 +202,6 @@ public static void main(String[] args){
 	System.out.println(arl);
 	cleanse(arl);
 	System.out.println(arl);
-}
-static void cleanse(ArrayList<Character> arl) {
-	// your code
 }
 ```
 
@@ -186,6 +219,14 @@ static void cleanse(ArrayList<Character> arl) {
 	> example
 		* divisors(20) = [1, 2, 4, 5, 10, 20]
 		* divisors(4) = [1, 2, 4]
+
+_Main method:_
+```java
+public static void main(String[] args){
+	System.out.println(divisors(20));
+	System.out.println(divisors(4));
+}
+```
 
 _solution:_
 ```java
@@ -206,6 +247,14 @@ static ArrayList<Integer> divisors(int n) {
 		* randomSubset([2, 3, 5, 6]) returns [2, 6] (maybe)
 		* randomSubset([2, 3, 5, 6]) returns [] (maybe)
 
+_Main method:_
+```java
+public static void main(String[] args){
+	int[] arr = {2, 3, 5, 6};
+	System.out.println(randomPick(arr));
+}
+```
+
 _solution:_
 ```java
 static ArrayList<Integer> randomPick(int[] arr) {
@@ -225,6 +274,18 @@ static ArrayList<Integer> randomPick(int[] arr) {
 		* rotate([3,1,5,7], 0) --> [3,1,5,7]
 		* rotate([2,7,4,4,4], 2) --> [4,4,2,7,4]
 		* rotate([2,5,7,2,1,3], -1) --> [5,7,2,1,3,2]
+
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<Integer> arl = new ArrayList<>();
+	for(int i=0; i<10; i++)
+		arl.add((int)(Math.random()*10));
+	System.out.println(arl);
+	rotate(arl, 2);
+	System.out.println(arl);
+}
+```
 
 _solution1:_
 ```java
@@ -276,6 +337,18 @@ public static void main(String[] args){
 
 1. Write a function which takes an ArrayList of Boolean and fills its last half with null references. Note that return-type of your function must be void. You can assume that the size of the parameter list is always even.
 
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<Boolean> arl = new ArrayList<>();
+	for(int i=0; i<10; i++)
+		arl.add(Math.random() < 0.5);
+	System.out.println(arl);
+	fill(arl);
+	System.out.println(arl);
+}
+```
+
 _solution:_
 ```java
 static void fill(ArrayList<Boolean> arl) {
@@ -291,6 +364,19 @@ static void fill(ArrayList<Boolean> arl) {
 	> example
 		* complete([“aa”, “aca”, “ba”, “ab”]) would not change anything.
 		* complete([“ab”, “qe”, “eq”]) appends “ba”.
+
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<String> arl = new ArrayList<>();
+	arl.add("ab");
+	arl.add("qe");
+	arl.add("eq");
+	System.out.println(arl);
+	complete(arl);
+	System.out.println(arl);
+}
+```
 
 _solution:_
 ```java
@@ -314,6 +400,20 @@ public static void complete(ArrayList<String> words) {
 	> example
 		* remove([“aa”, “aca”, “ba”, “ab”]) would not change anything.
 		* remove ([“ab”, “qe”, “eq”]) removes “ab”.
+
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<String> arl = new ArrayList<>();
+	arl.add("aa");
+	arl.add("aca");
+	arl.add("ba");
+	arl.add("ab");
+	System.out.println(arl);
+	remove(arl);
+	System.out.println(arl);
+}
+```
 
 _solution:_
 ```java
@@ -340,6 +440,25 @@ public static void remove(ArrayList<String> words) {
 		* common([1, 2, 3, 4, 5], [2, 4, 6, 8, 10]) returns [2, 4]
 		* common([1, 2, 3, 4, 5], [6, 7, 8, 9, 10]) returns []
 
+_Main method:_
+```java
+public static void main(String[] args){
+	ArrayList<Integer> arl1 = new ArrayList<>();
+	ArrayList<Integer> arl2 = new ArrayList<>();
+	ArrayList<Integer> arl3 = new ArrayList<>();
+	for(int i=0; i<5; i++){
+		arl1.add(i+1);
+		arl2.add(i+6);
+		arl3.add(i+3);
+	}
+	System.out.println(arl1);
+	System.out.println(arl2);
+	System.out.println(arl3);
+	System.out.println(common(arl1, arl2));
+	System.out.println(common(arl1, arl3));
+}
+```
+
 _solution:_
 ```java
 public static ArrayList<Integer> common(ArrayList<Integer> arl1, ArrayList<Integer> arl2) {
@@ -362,6 +481,14 @@ public static ArrayList<Integer> common(ArrayList<Integer> arl1, ArrayList<Integ
 getWords(“Once upon a time, there was a queen ruling a cold land. She had a big castle in which there were bright gardens as well as dark dungeons.”) returns
 
 [a, as, big, bright, castle, cold, dark, dungeons, gardens, had, in, land, once, quein if statementen, ruling, she, there, time, upon, was, well, were, which]
+
+_Main method:_
+```java
+public static void main(String[] args){
+	String text = "Once upon a time, there was a queen ruling a cold land. She had a big castle in which there were bright gardens as well as dark dungeons.";
+	System.out.println(getWords(text));
+}
+```
 
 _solution1:_
 ```java
