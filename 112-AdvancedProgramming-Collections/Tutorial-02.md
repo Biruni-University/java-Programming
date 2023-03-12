@@ -500,6 +500,7 @@ public static ArrayList<String> getWords(String text) {
 			words.add(word);
 		}
 	}
+	// collections.sort, is case sensitive, so it will sort A-Z, a-z
 	Collections.sort(words);
 	return words;
 }
