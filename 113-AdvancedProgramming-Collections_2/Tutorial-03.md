@@ -2,14 +2,14 @@
 
 # A brief recap
 
-| Data Structure | Definition | Ordered? | Allows Duplicates? | Allows Nulls? | Add/Remove | Examples |
-| --- | --- | --- | --- | --- | --- |
-| List | A collection that maintains the order of its elements | Yes | Yes | Yes | Add/remove at specified index or end | ArrayList, LinkedList |
-| Set | A collection that does not allow duplicates | No | No | Yes (only one null value allowed) | Add/remove elements | HashSet, TreeSet |
-| Map | A collection that stores key-value pairs, with no duplicate keys | No | Values only | Yes (only one null key allowed) | Add/remove key-value pairs | HashMap, TreeMap |
-| Stack | A collection that implements a last-in-first-out (LIFO) policy | Yes | Yes | Yes | Push/pop elements | Stack |
-| Queue | A collection that implements a first-in-first-out (FIFO) policy | Yes | Yes | Yes | Add to end/remove from front | LinkedList, PriorityQueue |
-| Tree | A hierarchical data structure that stores elements in a tree-like structure | Yes | Yes | Yes | Add/remove nodes | BinarySearchTree, RedBlackTree |
+| Data Structure | Definition                                                                  | Ordered? | Allows Duplicates? | Allows Nulls?                     | Add/Remove                           | Examples                       |
+| ---            | ---                                                                         | ---      | ---                | ---                               | ---                                  | ---                            |
+| List           | A collection that maintains the order of its elements                       | Yes      | Yes                | Yes                               | Add/remove at specified index or end | ArrayList, LinkedList          |
+| Set            | A collection that does not allow duplicates                                 | No       | No                 | Yes (only one null value allowed) | Add/remove elements                  | HashSet, TreeSet               |
+| Map            | A collection that stores key-value pairs, with no duplicate keys            | No       | Values only        | Yes (only one null key allowed)   | Add/remove key-value pairs           | HashMap, TreeMap               |
+| Stack          | A collection that implements a last-in-first-out (LIFO) policy              | Yes      | Yes                | Yes                               | Push/pop elements                    | Stack                          |
+| Queue          | A collection that implements a first-in-first-out (FIFO) policy             | Yes      | Yes                | Yes                               | Add to end/remove from front         | LinkedList, PriorityQueue      |
+| Tree           | A hierarchical data structure that stores elements in a tree-like structure | Yes      | Yes                | Yes                               | Add/remove nodes                     | BinarySearchTree, RedBlackTree |
 
 * LinkedList is yet another implementation of the List interface (ArrayList and Vector were too).
 
