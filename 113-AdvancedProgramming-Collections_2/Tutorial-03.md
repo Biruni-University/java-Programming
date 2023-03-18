@@ -807,6 +807,50 @@ static int solve(String expr) {
 
 * Recall the Round-Robin job scheduling algorithm. Represent each job’s remaining execution time with a LinkedList<Integer>. Write a program which simulates this scheduling algorithm, consider why using a LinkedList data structure is appropriate.
 
+_solution:_
+```java
+public static void main(String[] args) {
+	// Create a map of jobs with their remaining execution times
+	Map<String, LinkedList<Integer>> jobs = new HashMap<>();
+	// Job1 has 12 units of time remaining initially
+	jobs.put("Job1", new LinkedList<>(Arrays.asList(12, 8, 4)));
+	// Job2 has 9 units of time remaining initially
+	jobs.put("Job2", new LinkedList<>(Arrays.asList(9, 6, 2)));
+	// Job3 has 15 units of time remaining initially
+	jobs.put("Job3", new LinkedList<>(Arrays.asList(15, 10, 6)));
+
+	// Set the time slice for each job
+	int timeSlice = 4;
+
+	// Simulate the scheduling algorithm
+	while (!jobs.isEmpty()) {
+		// Iterate over a copy of the key set to avoid concurrent modification exceptions
+		for (String job : new ArrayList<>(jobs.keySet())) {
+			// Get the remaining execution time for the current job
+			LinkedList<Integer> remainingTime = jobs.get(job);
+
+			// If the job has no remaining execution time, remove it from the map
+			if (remainingTime.isEmpty()) {
+				jobs.remove(job);
+			} else {
+				// Otherwise, get the next unit of time to execute
+				int time = remainingTime.removeFirst();
+
+				// If the job can be completed in the current time slice, remove it from the map
+				if (time <= timeSlice) {
+					System.out.println(job + " completed.");
+					jobs.remove(job);
+				} else {
+					// Otherwise, add the remaining time back to the end of the list
+					remainingTime.addLast(time - timeSlice);
+					System.out.println(job + " has " + remainingTime.getFirst() + " units of time remaining.");
+				}
+			}
+		}
+	}
+}
+```
+
 ---
 
 * You want to buy a card collection which consists of 30 different cards in total. Each card normally costs 3 liras. However shop assistant is too bored that day and proposed you another scheme to buy the cards. According to the alternative scheme, you would draw a card from a bag randomly (where probability of drawing any different card is always equal), and you are supposed to pay 1 lira for each draw whether or not you draw a new card or one you have already drawn before. You are also allowed to switch between schemes at any time you want. What is the best strategy to buy the whole collection? Which strategy would you prefer if switching hadn’t been allowed?
@@ -815,37 +859,342 @@ static int solve(String expr) {
 
 * Write a function which takes a HashMap<Integer, String> and removes duplicates in the value collection while preserving the mapping. That is for any integer n in the keyset, map(n) = s iff map’(n) = s where map’ is the changed map.
 
+_Main method:_
+```java
+public static void main(String[] args) {
+	// Create a sample HashMap
+	HashMap<Integer, String> map = new HashMap<>();
+	map.put(1, "apple");
+	map.put(2, "banana");
+	map.put(3, "cherry");
+	map.put(4, "banana");
+	map.put(5, "apple");
+
+	// Print the original map
+	System.out.println("Original map:");
+	System.out.println(map);
+
+	// Remove duplicate values from the map
+	removeDuplicateValues(map);
+
+	// Print the modified map
+	System.out.println("Map with duplicates removed:");
+	System.out.println(map);
+}
+```
+
+_solution:_
+```java
+public static void removeDuplicateValues(HashMap<Integer, String> map) {
+	// Create a set to keep track of unique values
+	HashSet<String> uniqueValues = new HashSet<>();
+
+	// Create a list to keep track of keys with duplicate values
+	ArrayList<Integer> keysToRemove = new ArrayList<>();
+
+	// Iterate over the map entries
+	for (Map.Entry<Integer, String> entry : map.entrySet()) {
+		String value = entry.getValue();
+
+		// If the value has already been seen, mark the key for removal
+		if (uniqueValues.contains(value)) {
+			keysToRemove.add(entry.getKey());
+		} else {
+			uniqueValues.add(value);
+		}
+	}
+
+	// Remove the keys with duplicate values from the map
+	for (Integer key : keysToRemove) {
+		map.remove(key);
+	}
+}
+```
+
 ---
 
 * Write a function which takes a HashMap<Integer, Integer> and checks if it is a permutation mapping (in the same sense as the permutation function in math).
+
+_Main method:_
+```java
+public static void main(String[] args) {
+	// Example 1: Permutation mapping
+	HashMap<Integer, Integer> map1 = new HashMap<>();
+	map1.put(1, 2);
+	map1.put(2, 3);
+	map1.put(3, 1);
+
+	boolean isPermutation1 = isPermutation(map1);
+	if (isPermutation1) {
+		System.out.println("Example 1: The map is a permutation mapping.");
+	} else {
+		System.out.println("Example 1: The map is not a permutation mapping.");
+	}
+
+	// Example 2: Not a permutation mapping
+	HashMap<Integer, Integer> map2 = new HashMap<>();
+	map2.put(1, 2);
+	map2.put(2, 3);
+	map2.put(3, 3);
+
+	boolean isPermutation2 = isPermutation(map2);
+	if (isPermutation2) {
+		System.out.println("Example 2: The map is a permutation mapping.");
+	} else {
+		System.out.println("Example 2: The map is not a permutation mapping.");
+	}
+}
+```
+
+_Solution:_
+```java
+public static boolean isPermutation(HashMap<Integer, Integer> map) {
+	// Create a set to keep track of seen values
+	HashSet<Integer> seenValues = new HashSet<>();
+
+	// Iterate over the map entries
+	for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+		int key = entry.getKey();
+		int value = entry.getValue();
+
+		// Check if the key and value are equal
+		if (key == value) {
+			return false;
+		}
+
+		// Check if the value has already been seen
+		if (seenValues.contains(value)) {
+			return false;
+		}
+
+		seenValues.add(value);
+	}
+
+	// If we made it here, all values were unique and the keys and values were not equal
+	return true;
+}
+```
 
 ---
 
 * Write a function which takes two integers a and b, and a HashMap<String, Integer>, mapping each person’s name to her age, and returns another HashMap<String, Integer> which filters the input mapping and includes only those people with the age in between a and b. You can assume that a<=b.
 
+_Main method:_
+```java
+public static void main(String[] args) {
+	HashMap<String, Integer> people = new HashMap<>();
+	people.put("Alice", 25);
+	people.put("Bob", 30);
+	people.put("Charlie", 20);
+	people.put("David", 35);
+
+	HashMap<String, Integer> filtered = filterByAge(25, 30, people);
+	System.out.println(filtered);  // prints "{Alice=25, Bob=30}"
+}
+```
+
+_Solution:_
+```java
+public static HashMap<String, Integer> filterByAge(int a, int b, HashMap<String, Integer> people) {
+	// Create a new HashMap to store the filtered results
+	HashMap<String, Integer> filtered = new HashMap<>();
+
+	// Loop over the input mapping and check the age of each person
+	for (String name : people.keySet()) {
+		int age = people.get(name);
+
+		// If the age is in the range [a, b], add the person to the filtered mapping
+		if (age >= a && age <= b) {
+			filtered.put(name, age);
+		}
+	}
+
+	// Return the filtered mapping
+	return filtered;
+}
+```
+
 ---
 
 * Write a function which takes a Stack<Integer> as parameter, returns the second element (from top) without changing the stack at the end.
 
+_Main method:_
+```java
+public static void main(String[] args) {
+	// Create a stack of integers
+	Stack<Integer> stack = new Stack<>();
+	stack.push(1);
+	stack.push(2);
+	stack.push(3);
+	stack.push(4);
+
+	// Get the second element of the stack
+	int second = getSecondElement(stack);
+	System.out.println("The second element of the stack is: " + second);
+
+	// Verify that the original stack is unchanged
+	System.out.println("The original stack is: " + stack);
+}
+```
+
+_Solution:_
+```java
+public static int getSecondElement(Stack<Integer> stack) {
+	int top = stack.pop();  // remove top element
+	int second = stack.peek();  // get second element without removing it
+	stack.push(top);  // push back the original top element
+	return second;
+}
+```
+
 ---
 
-* Consider a group of kids forming a queue to shoot a basket in the schoolyard. All kids begin with 0 point, and each successful basket accounts +1 point. The kid in the front of the queue shoots (potentially more than once) until she fails to score a basket, after which she enters the queue from the back again. Each kid has 30% probability of shooting a successful basket each time. The game continues until one of the kids reaches 10 points. Write a program to simulate this game. Experiment with different values for the total number of kids and try to see how it affects the average number of turns a game takes from beginning to end.
+* Write a function which takes two string stacks of equal size and interleaves them into a single stack and returns it.
+> example
 
----
+interleave([1,2,3], [a,b,c]) returns [1,a,2,b,3,c]
 
-* Write a function which takes two string stacks of equal size and interleaves them into a single stack and returns it. e.g. interleave([1,2,3], [a,b,c]) returns [1,a,2,b,3,c]
+_Main method:_
+```java
+public static void main(String[] args) {
+	Stack<String> s1 = new Stack<>();
+	s1.push("a");
+	s1.push("b");
+	s1.push("c");
+	Stack<String> s2 = new Stack<>();
+	s2.push("1");
+	s2.push("2");
+	s2.push("3");
+	Stack<String> result = interleave(s1, s2);
+	System.out.println(result); // prints "[c, 3, b, 2, a, 1]"
+}
+```
+
+_Solution:_
+```java
+public static Stack<String> interleave(Stack<String> s1, Stack<String> s2) {
+	Stack<String> result = new Stack<>();
+	while (!s1.isEmpty() && !s2.isEmpty()) {
+		result.push(s1.pop());
+		result.push(s2.pop());
+	}
+	// If one of the stacks is longer, add the remaining elements to the result stack
+	while (!s1.isEmpty()) {
+		result.push(s1.pop());
+	}
+	while (!s2.isEmpty()) {
+		result.push(s2.pop());
+	}
+	return result;
+}
+```
 
 ---
 
 * Write a function which takes two stacks of sorted integers and dumps their content in a new stack in such a way that the resulting stack is again sorted but in reverse direction.
 
+_Main method:_
+```java
+public static void main(String[] args) {
+	// Create two sorted stacks
+	Stack<Integer> stack1 = new Stack<>();
+	stack1.push(10);
+	stack1.push(7);
+	stack1.push(5);
+	stack1.push(3);
+	stack1.push(1);
+
+	Stack<Integer> stack2 = new Stack<>();
+	stack2.push(9);
+	stack2.push(6);
+	stack2.push(4);
+	stack2.push(2);
+
+	// Merge the stacks in reverse order
+	Stack<Integer> resultStack = reverseSortedMerge(stack1, stack2);
+
+	// Print the merged stack
+	System.out.println(resultStack);
+}
+```
+
+_Solution:_
+```java
+public static Stack<Integer> reverseSortedMerge(Stack<Integer> stack1, Stack<Integer> stack2) {
+	Stack<Integer> resultStack = new Stack<>();
+
+	// Merge the two stacks in reverse order
+	while (!stack1.empty() && !stack2.empty()) {
+		if (stack1.peek() < stack2.peek()) {
+			resultStack.push(stack1.pop());
+		} else {
+			resultStack.push(stack2.pop());
+		}
+	}
+
+	// Dump the remaining elements of stack1 into resultStack
+	while (!stack1.empty()) {
+		resultStack.push(stack1.pop());
+	}
+
+	// Dump the remaining elements of stack2 into resultStack
+	while (!stack2.empty()) {
+		resultStack.push(stack2.pop());
+	}
+
+	return resultStack;
+}
+```
+
 ---
 
 * Write a function which takes a stack and returns the bottom-most element without changing the stack in the end.
 
----
+_Main method:_
+```java
+public static void main(String[] args) {
+	// Create a stack of integers
+	Stack<Integer> stack = new Stack<>();
+	stack.push(1);
+	stack.push(2);
+	stack.push(3);
+	stack.push(4);
+	stack.push(5);
 
-* Imitate a queue using two stacks.
+	// Call the getBottom function to retrieve the bottom-most element
+	int bottom = getBottom(stack);
+
+	// Print the bottom-most element
+	System.out.println("Bottom-most element: " + bottom);
+}
+```
+
+_Solution:_
+```java
+public static int getBottom(Stack<Integer> stack) {
+	// Check if the stack is empty
+	if (stack.isEmpty()) {
+		throw new IllegalArgumentException("Stack is empty");
+	}
+
+	// Pop all elements from the stack and store them in a temporary stack
+	Stack<Integer> tempStack = new Stack<>();
+	while (!stack.isEmpty()) {
+		tempStack.push(stack.pop());
+	}
+
+	// Get the bottom-most element
+	int bottom = tempStack.peek();
+
+	// Push all elements back onto the original stack
+	while (!tempStack.isEmpty()) {
+		stack.push(tempStack.pop());
+	}
+
+	// Return the bottom-most element
+	return bottom;
+}
+```
 
 \pagebreak
 
@@ -888,3 +1237,93 @@ static int drawBalls(LinkedList<String> balls) {
 	return redBalls + blackBalls;
 }
 ```
+
+---
+
+* Consider a group of kids forming a queue to shoot a basket in the schoolyard. All kids begin with 0 point, and each successful basket accounts +1 point. The kid in the front of the queue shoots (potentially more than once) until she fails to score a basket, after which she enters the queue from the back again. Each kid has 30% probability of shooting a successful basket each time. The game continues until one of the kids reaches 10 points. Write a program to simulate this game. Experiment with different values for the total number of kids and try to see how it affects the average number of turns a game takes from beginning to end.
+
+_solution:_
+```java
+// Probability that a kid will make a basket
+private static final double BASKET_PROBABILITY = 0.3;
+
+// Number of points needed to win the game
+private static final int WINNING_SCORE = 10;
+
+// Random number generator for shooting attempts
+private static final Random RANDOM = new Random();
+
+public static void main(String[] args) {
+	// Number of kids in the queue
+	int numKids = 10;
+
+	// Number of times to run the simulation
+	int numSimulations = 10000;
+
+	// Total number of turns across all simulations
+	int totalTurns = 0;
+
+	// Run the simulation multiple times and track the total number of turns
+	for (int i = 0; i < numSimulations; i++) {
+		int turns = simulateGame(numKids);
+		totalTurns += turns;
+	}
+
+	// Calculate the average number of turns across all simulations
+	double averageTurns = (double) totalTurns / numSimulations;
+	System.out.println("Average number of turns: " + averageTurns);
+}
+
+/**
+ * Simulates a game with a queue of kids, each shooting baskets until one kid
+ * reaches the winning score.
+ *
+ * @param numKids the number of kids in the queue
+ * @return the number of turns it took for the game to end
+ */
+private static int simulateGame(int numKids) {
+	// Create a queue of kids, each with a score of 0
+	Queue<Integer> queue = new LinkedList<>();
+	for (int i = 0; i < numKids; i++) {
+		queue.add(0);
+	}
+
+	// Track the number of turns in the game
+	int numTurns = 0;
+
+	// Continue playing until a kid reaches the winning score
+	while (true) {
+		// The kid in front of the queue shoots until they miss
+		int score = 0;
+		while (true) {
+			// Attempt to make a basket
+			if (RANDOM.nextDouble() < BASKET_PROBABILITY) {
+				score++;
+			} else {
+				break;
+			}
+		}
+
+		// Update the kid's score
+		int currentScore = queue.remove() + score;
+		queue.add(currentScore);
+
+		// Check if any kid has reached the winning score
+		for (int kidScore : queue) {
+			if (kidScore >= WINNING_SCORE) {
+				return numTurns;
+			}
+		}
+
+		// Move the kid who just shot to the back of the queue
+		queue.add(queue.remove());
+
+		// Increment the turn counter
+		numTurns++;
+	}
+}
+```
+
+---
+
+* [Imitate a queue using two stacks.](https://stackoverflow.com/a/39089983)
