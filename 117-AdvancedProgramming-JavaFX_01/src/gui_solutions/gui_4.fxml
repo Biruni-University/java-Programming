@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Görünüm">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Düzen">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Yardım">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextField alignment="CENTER_RIGHT" editable="false" maxHeight="1.7976931348623157E308" prefHeight="50.0" text="0" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </TextField>
+      <GridPane alignment="CENTER" hgap="5.0" vgap="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="=" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="MC" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="MR" GridPane.columnIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="←" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="CE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="MS" GridPane.columnIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="C" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="7" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="M+" GridPane.columnIndex="3" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="M-" GridPane.columnIndex="4" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="+/-" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="√" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="\%" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="4" GridPane.rowIndex="3" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="*" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.vgrow="NEVER" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="1/x" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="1" GridPane.rowIndex="4" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="40.0" text="." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </GridPane>
+   </children>
+</VBox>

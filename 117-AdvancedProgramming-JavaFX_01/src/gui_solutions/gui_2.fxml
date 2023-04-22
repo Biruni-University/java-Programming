@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox spacing="5.0" style="-fx-border-color: AQUA;">
+         <children>
+            <HBox>
+               <children>
+                  <Label prefWidth="70.0" text="First Name: " />
+                  <TextField />
+                  <Region prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Label text="Last Name: " />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label prefWidth="70.0" text="Title: " />
+                  <TextField />
+                  <Region prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                  <Label text="Nickname: " />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label prefWidth="70.0" text="Format: " />
+                  <ComboBox editable="true" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </VBox>
+      <Region prefHeight="80.0" VBox.vgrow="ALWAYS" />
+      <VBox style="-fx-border-color: AQUA;">
+         <children>
+            <HBox>
+               <children>
+                  <Label text="E-mail Address: " />
+                  <TextField HBox.hgrow="ALWAYS" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" prefWidth="80.0" text="Add">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox spacing="5.0">
+               <children>
+                  <ListView HBox.hgrow="ALWAYS" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <VBox alignment="TOP_RIGHT" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="80.0" text="Edit" />
+                        <Button mnemonicParsing="false" prefWidth="80.0" text="Remove" />
+                        <Button mnemonicParsing="false" prefWidth="80.0" text="As Default" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <Label text="Mail Format: ">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <HBox spacing="5.0">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <RadioButton mnemonicParsing="false" text="HTML">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="toggle" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="PlainText" toggleGroup="$toggle" />
+                  <RadioButton mnemonicParsing="false" text="Custom" toggleGroup="$toggle" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="208.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" text="OK" />
+            <Button mnemonicParsing="false" text="Cancel" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
