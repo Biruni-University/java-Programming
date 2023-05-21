@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <children>
+      <HBox spacing="5.0" styleClass="bordered-titled-border">
+         <children>
+            <VBox alignment="TOP_RIGHT" spacing="15.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="First Number: " />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Second Number: " />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Result: " />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <TextField fx:id="firstNum" />
+                  <TextField fx:id="secondNum" />
+                  <TextField fx:id="result" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#add" text="Add" />
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clear" text="Clear" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="-50.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" text="Exit" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
