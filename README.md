@@ -8,11 +8,11 @@ the name of directory has three parts.
 
 1. index of topic
 
-> first digit is study year
+> first number is study year
 
-> second digit is study semester
+> second number is study semester
 
-> third digit is index of topic in related semester
+> third number is index of topic in related semester
 
 2. name related cource
 
